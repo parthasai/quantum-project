@@ -5,6 +5,7 @@ import math
 import pygame_menu
 import button
 import requests
+import os
 
 from tkinter import *
 from tkinter import messagebox
@@ -24,6 +25,16 @@ COLUMN_COUNT = 7
 
 REDPLAYER = "Player 1"
 YELLOWPLAYER = "Player 2"
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 def create_board():
 	board = np.zeros((ROW_COUNT,COLUMN_COUNT))
@@ -101,7 +112,7 @@ RADIUS = int(SQUARESIZE/2 - 5)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption('Q in a ROW')
-Icon = pygame.image.load('logo.png')
+Icon = pygame.image.load(resource_path('logo.png'))
 pygame.display.set_icon(Icon)
 
 menu = pygame_menu.Menu('Q in a ROW', width, height, theme=pygame_menu.themes.THEME_DARK)
@@ -119,16 +130,16 @@ def start_the_game():
 	Ele2=[]
 	SCoin = 0
 
-	back_img = pygame.image.load('back_btn.png').convert_alpha()
+	back_img = pygame.image.load(resource_path('back_btn.png')).convert_alpha()
 	back_button = button.Button(width - 40, 20, back_img,back_img, 1)
 
-	super_img_off = pygame.image.load('super_off_btn.png').convert_alpha()
-	super_img_on = pygame.image.load('super_on_btn.png').convert_alpha()
+	super_img_off = pygame.image.load(resource_path('super_off_btn.png')).convert_alpha()
+	super_img_on = pygame.image.load(resource_path('super_on_btn.png')).convert_alpha()
 
 	super_button = button.Button(20, 20, super_img_off,super_img_on, 1)
 
-	collapse_img_off = pygame.image.load('collapse_off_btn.png').convert_alpha()
-	collapse_img_on = pygame.image.load('collapse_on_btn.png').convert_alpha()
+	collapse_img_off = pygame.image.load(resource_path('collapse_off_btn.png')).convert_alpha()
+	collapse_img_on = pygame.image.load(resource_path('collapse_on_btn.png')).convert_alpha()
 
 	collapse_button = button.Button(width - 210, 20, collapse_img_off,collapse_img_on, 1)
 
@@ -225,7 +236,17 @@ def start_the_game():
 
 			pygame.draw.rect(screen, BLACK, (width/2-80,60, 200, 25))
 			collapse_button.draw(screen, False)
-			pygame.display.update()
+			pygame.draw.rect(screen, BLACK, (width/2-90,20, 200, 25))
+			if turn == 0:
+				label_turn = buttonFont.render(REDPLAYER+"'s Turn", 1, WHITE)
+				screen.blit(label_turn, (width/2-90,20))
+			else: 
+				label_turn = buttonFont.render(YELLOWPLAYER+"'s Turn", 1, WHITE)
+				screen.blit(label_turn, (width/2-90,20))
+			print_board(board)
+			draw_board(board)
+			if game_over:
+				pygame.time.wait(3000)
 
 			pygame.event.clear()
 
@@ -348,15 +369,13 @@ def start_the_game():
 					screen.blit(label_turn, (width/2-90,20))
 				print_board(board)
 				draw_board(board)
-				# if game_over:
-				# 	pygame.time.wait(3000)
-		if game_over:
-			pygame.time.wait(3000)
+				if game_over:
+					pygame.time.wait(3000)
 
 
-ABOUT = ['Q in a ROW v0.1',
-         'Author: S Partha Sai',
-         'Email: sparthasai@gmail.com',
+ABOUT = ['Q in a ROW v0.1\n',
+         'Authors: Partha Sai & Sathya Narayana',
+         'Emails: sparthasai@gmail.com, \n              sathyanarayanans135@gmail.com',
 		 '\n\nDescription: \nQ in a ROW is our Quantum take on 4 in a Row game.\nThis game was created as part of our project submission \nfor Certification in Quantum Computing & Machine \nLearning (CQCML-01)']
 
 WINDOW_SIZE = (width, height)
@@ -395,7 +414,7 @@ rules_menu.add.vertical_margin(30)
 rules_menu.add.button('Return to Menu', pygame_menu.events.BACK)
 
 
-menu.add.image('logo.png')
+menu.add.image(resource_path('logo.png'))
 menu.add.label("")
 red = menu.add.text_input('Red Player : ', default='Player 1',selection_color=RED)
 yellow = menu.add.text_input('Yellow Player : ', default='Player 2',selection_color=YELLOW)

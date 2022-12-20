@@ -17,5 +17,5 @@ setup(
     version="0.1",
     description="Quantum 4 in a ROW Game !!",
     options={"build_exe": build_exe_options},
-    executables=[Executable("Q_in_a_ROW.py", base=base)],
+    executables=[Executable("Q_in_a_ROW_frontend.py", base=base)],
 )
