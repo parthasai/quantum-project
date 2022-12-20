@@ -161,17 +161,6 @@ def start_the_game():
 	label_turn = buttonFont.render(REDPLAYER+"'s Turn", 1, WHITE)
 	screen.blit(label_turn, (width/2-90,20))
 
-
-	# pygame.draw.rect(screen,WHITE,[20,20,200,60])
-	# label = buttonFont.render("SuperPosition", 1, BLACK)
-	# screen.blit(label, (40,20))
-	# label = buttonFont.render("OFF", 1, BLACK)
-	# screen.blit(label, (40,45))
-
-	# pygame.draw.rect(screen,WHITE,[width-210,20,120,60])
-	# label = buttonFont.render("Collapse", 1, BLACK)
-	# screen.blit(label, (width-200,40))
-
 	back_button.draw(screen, False)
 	super_button.draw(screen, superposition)
 	collapse_button.draw(screen, collapse)
@@ -181,12 +170,7 @@ def start_the_game():
 		mouse = pygame.mouse.get_pos()
 		if back_button.draw(screen,False):
 			return
-		# if super_button.draw(screen):
-		# 	if SCoin == 0:
-		# 		superposition = not superposition
-		# 	else:
-		# 		messagebox.showinfo("Alert !!","You can't change to Classical in middle of Quantum Turn.")
-		# 		width-80,20,40,60
+
 		if super_button.draw(screen, superposition):
 			if SCoin == 0:
 				superposition = not superposition
@@ -258,38 +242,7 @@ def start_the_game():
 			collapse_button.draw(screen, False)
 			pygame.display.update()
 
-			# pygame.draw.rect(screen, BLACK, (width/2-80,60, 200, 25))
-			# pygame.draw.rect(screen,WHITE,[width-210,20,120,60])
-			# label = buttonFont.render("Collapse", 1, BLACK)
-			# screen.blit(label, (width-200,40))
 			pygame.event.clear()
-				# if superposition:
-		# if super_button_on.draw(screen):
-		# 		if SCoin == 0:
-		# 			superposition = not superposition
-		# 		else:
-		# 			messagebox.showinfo("Alert !!","You can't change to Classical in middle of Quantum Turn.")
-		# 	#pygame.draw.rect(screen,GREEN,[20,20,200,60])
-		# 	# label = buttonFont.render("ON", 1, BLACK)
-		# 	# screen.blit(label, (40,45))
-		# else:
-		# 	if super_button.draw(screen):
-		# 		if SCoin == 0:
-		# 			superposition = not superposition
-		# 		else:
-		# 			messagebox.showinfo("Alert !!","You can't change to Classical in middle of Quantum Turn.")
-
-			# super_button.draw(screen)
-		# 	pygame.draw.rect(screen,WHITE,[20,20,200,60])
-		# 	label = buttonFont.render("OFF", 1, BLACK)
-		# 	screen.blit(label, (40,45))
-		# label = buttonFont.render("SuperPosition", 1, BLACK)
-		# screen.blit(label, (40,20))
-
-		# pygame.draw.rect(screen,WHITE,[width-210,20,120,60])
-		# label = buttonFont.render("Collapse", 1, BLACK)
-		# screen.blit(label, (width-200,40))
-
 
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -315,85 +268,11 @@ def start_the_game():
 
 				if 20 <= mouse[0] <= 230 and 20 <= mouse[1] <= 80:
 					pass
-					# if SCoin == 0:
-					# 	superposition = not superposition
-					# else:
-					# 	messagebox.showinfo("Alert !!","You can't change to Classical in middle of Quantum Turn.")
-					# 	width-80,20,40,60
 
 				elif width-210 <= mouse[0] <= width and 20 <= mouse[1] <= 80:
-					#SPString = input ("Enter Superposition collapse string of length "+str(len(SPPairs)))
 					pass
-					# pygame.draw.rect(screen,GREEN,[width-210,20,120,60])
-					# label = buttonFont.render("Collapse", 1, BLACK)
-					# screen.blit(label, (width-200,40))
-
-					# label_collapse = buttonFont.render("Computing ...", 1, WHITE)
-					# screen.blit(label_collapse, (width/2-80,60))
-
-					# if len(SPPairs)>0:
-					# 	SPString = board_collapse(len(SPPairs))
-					# 	print(SPString)
-					# 	for i,char in enumerate(SPString):
-					# 	#char = 1
-					# 	#for i, pair in enumerate(SPPairs):
-					# 		if char == "0":
-					# 			if SPPairs[i][0][2] == 3:
-					# 				board[SPPairs[i][0][0]][SPPairs[i][0][1]]=1
-					# 			else:
-					# 				board[SPPairs[i][0][0]][SPPairs[i][0][1]]=2
-					# 			board[SPPairs[i][1][0]][SPPairs[i][1][1]]=0
-					# 		else:
-					# 			if SPPairs[i][1][2] == 3:
-					# 				board[SPPairs[i][1][0]][SPPairs[i][1][1]]=1
-					# 			else:
-					# 				board[SPPairs[i][1][0]][SPPairs[i][1][1]]=2
-					# 			board[SPPairs[i][0][0]][SPPairs[i][0][1]]=0
-					# 		draw_board(board)
-					# 		pygame.time.wait(1000)
-					# 	SPPairs.clear()
-					# 	columnList = []
-					# 	for column in range(0,7):
-					# 		for row in board:
-					# 			if row[column] > 0:
-					# 				columnList.append(row[column])
-					# 		for i in range(0,6):
-					# 			try:
-					# 				board[i][column] = columnList[i]
-					# 			except Exception as e:
-					# 				board[i][column] = 0
-					# 		columnList=[]
-					# 		pygame.time.wait(200)
-					# 		draw_board(board)
-					# 	win1 = winning_move(board, 1)
-					# 	win2 = winning_move(board, 2)
-					# 	if win1 and win2:
-					# 		label = myfont.render("Draw Match !!", 1, WHITE)
-					# 		screen.blit(label, (20,SQUARESIZE+10))
-					# 		game_over = True
-					# 	elif win1:
-					# 		label = myfont.render(REDPLAYER+" Wins!!", 1, RED)
-					# 		screen.blit(label, (20,SQUARESIZE+10))
-					# 		game_over = True
-					# 	elif win2:
-					# 		label = myfont.render(YELLOWPLAYER+" Wins!!", 1, YELLOW)
-					# 		screen.blit(label, (20,SQUARESIZE+10))
-					# 		game_over = True
-					# 	else:
-					# 		if turn==0:
-					# 			turn = 1
-					# 		else:
-					# 			turn = 0
-					# else:
-					# 	messagebox.showinfo('Alert !!','No Quantum Pairs to Collapse')
 					
-					# pygame.draw.rect(screen, BLACK, (width/2-80,60, 200, 25))
-					# pygame.draw.rect(screen,WHITE,[width-210,20,120,60])
-					# label = buttonFont.render("Collapse", 1, BLACK)
-					# screen.blit(label, (width-200,40))
-					# pygame.event.clear()
 				else:
-
 					#print(event.pos)
 					# Ask for Player 1 Input
 					if turn == 0:
@@ -484,23 +363,10 @@ def start_the_game():
 					screen.blit(label_turn, (width/2-90,20))
 				print_board(board)
 				draw_board(board)
-
-
-				if game_over:
-					pygame.time.wait(3000)
-
-# def about():
-# 	messagebox.showinfo("About the Game","Q in a ROW is our Quantum take on 4 in a Row game. \n\nThis game was created as part of our project submission for \nCertification in Quantum Computing & Machine Learning (CQCML-01) \n\n\n Created By: S Partha Sai")
-
-
-# def rules():
-# 	messagebox.showinfo("Rules of Q in a Row","Coming Soon ...")
-
-menu.add.image('logo.png')
-menu.add.label("")
-red = menu.add.text_input('Red Player : ', default='Player 1',selection_color=RED)
-yellow = menu.add.text_input('Yellow Player : ', default='Player 2',selection_color=YELLOW)
-menu.add.button('Play', start_the_game,selection_color=GREEN)
+				# if game_over:
+				# 	pygame.time.wait(3000)
+		if game_over:
+			pygame.time.wait(3000)
 
 
 ABOUT = ['Q in a ROW v0.1',
@@ -544,11 +410,11 @@ rules_menu.add.vertical_margin(30)
 rules_menu.add.button('Return to Menu', pygame_menu.events.BACK)
 
 
-
-
-
-
-
+menu.add.image('logo.png')
+menu.add.label("")
+red = menu.add.text_input('Red Player : ', default='Player 1',selection_color=RED)
+yellow = menu.add.text_input('Yellow Player : ', default='Player 2',selection_color=YELLOW)
+menu.add.button('Play', start_the_game,selection_color=GREEN)
 menu.add.button('Rules', rules_menu,selection_color=GREEN)
 menu.add.button('About', about_menu,selection_color=GREEN)
 menu.add.button('Quit', pygame_menu.events.EXIT,selection_color=GREEN)
