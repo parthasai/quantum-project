@@ -79,7 +79,7 @@ def winning_move(board, piece):
 			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
 				return True
 
-def draw_board(board):
+def draw_board(board, Pairs):
 	for c in range(COLUMN_COUNT):
 		for r in range(ROW_COUNT):
 			pygame.draw.rect(screen, BLUE, (c*SQUARESIZE, (r+1)*SQUARESIZE+SQUARESIZE, SQUARESIZE, SQUARESIZE))
@@ -95,6 +95,17 @@ def draw_board(board):
 				pygame.draw.circle(screen, LIGHT_RED, (int(c*SQUARESIZE+SQUARESIZE/2), height-int(r*SQUARESIZE+SQUARESIZE/2)), 3*RADIUS/4)
 			elif board[r][c] == 4: 
 				pygame.draw.circle(screen, LIGHT_YELLOW, (int(c*SQUARESIZE+SQUARESIZE/2), height-int(r*SQUARESIZE+SQUARESIZE/2)), 3*RADIUS/4)
+	
+	buttonFont = pygame.font.SysFont("monospace", 20, True)
+
+	for i, pair in enumerate(Pairs):
+		for SCoin in pair:
+			label_pair = buttonFont.render(str(i+1), 1, BLACK)
+			if i+1 < 10:
+				screen.blit(label_pair, (int(SCoin[1]*SQUARESIZE+SQUARESIZE/2)-5,height-int(SCoin[0]*SQUARESIZE+SQUARESIZE/2)-10))
+			else:
+				screen.blit(label_pair, (int(SCoin[1]*SQUARESIZE+SQUARESIZE/2)-10,height-int(SCoin[0]*SQUARESIZE+SQUARESIZE/2)-10))
+
 	pygame.display.update()
 
 
@@ -158,7 +169,7 @@ def start_the_game():
 	back_button.draw(screen, False)
 	super_button.draw(screen, superposition)
 	collapse_button.draw(screen, collapse)
-	draw_board(board)
+	draw_board(board, SPPairs)
 
 	while not game_over:
 		mouse = pygame.mouse.get_pos()
@@ -196,7 +207,7 @@ def start_the_game():
 						else:
 							board[SPPairs[i][1][0]][SPPairs[i][1][1]]=2
 						board[SPPairs[i][0][0]][SPPairs[i][0][1]]=0
-					draw_board(board)
+					draw_board(board, SPPairs)
 					pygame.time.wait(1000)
 				SPPairs.clear()
 				columnList = []
@@ -211,7 +222,7 @@ def start_the_game():
 							board[i][column] = 0
 					columnList=[]
 					pygame.time.wait(200)
-					draw_board(board)
+					draw_board(board, SPPairs)
 				win1 = winning_move(board, 1)
 				win2 = winning_move(board, 2)
 				if win1 and win2:
@@ -244,9 +255,10 @@ def start_the_game():
 				label_turn = buttonFont.render(YELLOWPLAYER+"'s Turn", 1, WHITE)
 				screen.blit(label_turn, (width/2-90,20))
 			print_board(board)
-			draw_board(board)
+			draw_board(board, SPPairs)
 			if game_over:
-				pygame.time.wait(3000)
+				messagebox.showinfo('Game Over !!','Click OK to Quit.')
+				pygame.time.wait(1000)
 
 			pygame.event.clear()
 
@@ -368,9 +380,10 @@ def start_the_game():
 					label_turn = buttonFont.render(YELLOWPLAYER+"'s Turn", 1, WHITE)
 					screen.blit(label_turn, (width/2-90,20))
 				print_board(board)
-				draw_board(board)
+				draw_board(board, SPPairs)
 				if game_over:
-					pygame.time.wait(3000)
+					messagebox.showinfo('Game Over !!','Click OK to Quit.')
+					pygame.time.wait(1000)
 
 
 ABOUT = ['Q in a ROW v0.1\n',
