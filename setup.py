@@ -3,7 +3,7 @@ from cx_Freeze import setup, Executable
 
 # Dependencies are automatically detected, but it might need fine tuning.
 # "packages": ["os"] is used as example only
-build_exe_options = {"packages": ["pygame","numpy","sys","math","tkinter","qiskit_aer","qiskit","retworkx","rustworkx"], "include_files":["logo.png"] }
+build_exe_options = {"packages": ["pygame","numpy","sys","math","tkinter","requests"], "include_files":["logo.png", "button.py","super_on_btn.png","super_off_btn.png","collapse_off_btn.png","collapse_on_btn.png","back_btn.png"] }
 
 #"includes":["qiskit_aer","qiskit.circuit","qiskit.execute_function"]
 
