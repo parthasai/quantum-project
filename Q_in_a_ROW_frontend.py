@@ -426,12 +426,17 @@ for m in RULES:
 rules_menu.add.vertical_margin(30)
 rules_menu.add.button('Return to Menu', pygame_menu.events.BACK)
 
+def switch():
+	a = red.get_value()
+	red.set_value(yellow.get_value())
+	yellow.set_value(a)
 
 menu.add.image(resource_path('logo.png'))
 menu.add.label("")
-red = menu.add.text_input('Red Player : ', default='Player 1',selection_color=RED)
-yellow = menu.add.text_input('Yellow Player : ', default='Player 2',selection_color=YELLOW)
-menu.add.button('Play', start_the_game,selection_color=GREEN)
+red = menu.add.text_input('Red Player : ', default='Player 1',selection_color=RED,font_color=RED)
+yellow = menu.add.text_input('Yellow Player : ', default='Player 2',selection_color=YELLOW,font_color=YELLOW)
+menu.add.button('Play Game', start_the_game,selection_color=GREEN)
+menu.add.button('Switch Turns', switch,selection_color=GREEN)
 menu.add.button('Rules', rules_menu,selection_color=GREEN)
 menu.add.button('About', about_menu,selection_color=GREEN)
 menu.add.button('Quit', pygame_menu.events.EXIT,selection_color=GREEN)
