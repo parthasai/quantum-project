@@ -409,7 +409,32 @@ about_menu.add.vertical_margin(30)
 about_menu.add.button('Return to Menu', pygame_menu.events.BACK)
 
 
-RULES = ['COMING SOON ...']
+RULES = ['Players take turns placing colored pieces into columns.',
+'To create a quantum superposition, players',
+'can click the "SUPERPOSITION" button and place',
+'two lighter-shaded pieces in different locations,',
+'which each have a 50% chance of appearing in either',
+'spot upon clicking "COLLAPSE".',
+'',
+'Using quantum pieces also denies certain squares',
+'to opponents. The game continues until one player',
+'gets four of their classical pieces in a row ',
+'horizontally, vertically, or diagonally.',
+'',
+'If the board fills up with classical pieces ',
+'before either player can achieve WIN, the game',
+'ends in a DRAW.',
+'Additionally, if both players form winning combinations ',
+'simultaneously when the superpositions collapse,',
+'it is also a DRAW.',
+'',
+'Things to note:',
+'- Player looses a turn on Clicking "COLLAPSE"',
+'- Player cant change to Classical after ',
+'  dropping a Quantum piece',
+'- Player can trigger Collapse only if there',
+'  is at least one Quantum Pair on the board'
+]
 
 rules_theme = pygame_menu.themes.THEME_DARK
 rules_theme.widget_margin = (0, 0)
